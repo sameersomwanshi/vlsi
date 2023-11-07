@@ -1,0 +1,38 @@
+LIBRARY ieee; 
+USE ieee.std_logic_1164.ALL; 
+ENTITY testFIFO IS 
+END testFIFO; 
+ARCHITECTURE behavior OF testFIFO IS 
+COMPONENT fifo_ent 
+PORT( 
+enr : IN std_logic; 
+enw : IN std_logic; 
+dataout : OUT std_logic_vector(3 downto 0); 
+datain : IN std_logic_vector(3 downto 0); 
+empty : OUT std_logic; 
+full : OUT std_logic; 
+clk : IN std_logic 
+) 
+END COMPONENT; 
+signal enr : std_logic :='0"; 
+signal enw : std_logic :='0"; 
+signal datain : std_logic_vector(3 downto 0) := (others =>'0"); 
+signal clk : std_logic :='0"; 
+signal dataout : std_logic_vector(3 downto 0); 
+signal empty : std_logic; 
+signal full : std_logic; 
+constant clk_period : time :=10 ns; 
+BEGIN 
+uut: fifo_ent PORT MAP ( 
+enr =>enr, 
+enw =>enw, 
+dataout => dataout, 
+datain => datain, 
+empty => empty, 
+full => full, 
+clk =>clk 
+) 
+clk_process :process 
+begin 
+clk <='0"; 
+wait for clk_period/2; 87 clk <='1";
