@@ -1,0 +1,27 @@
+use IEEE.STD_LOGIC_1164.ALL; 
+use IEEE.STD_LOGIC_unsigned.ALL; 
+use IEEE.STD_LOGIC_arith.ALL; 
+entity alu_ PROGRAM1 is 
+Port (a:in STD_LOGIC_VECTOR(3 downto 0); 36 
+b : in STD_LOGIC_VECTOR(3 downto 0); 
+sel : in STD_LOGIC_VECTOR(2 downto 0); 
+op : out STD_LOGIC_VECTOR(3 downto 0)); 
+end alu_PROGRAM1; 
+architecture Behavioral of 
+alu_PROGRAM1 is 42 
+begin 
+process(a,b,sel) 
+begin 
+case sel is 
+when "000"=> op <= a+b; 
+when "001"=> op <= a-b; 
+when "010"=> op <= a and b; 50    when "011"=> op <= a or
+b; 
+when "100"=> op <= a nor b; 
+when "101"=> op <= a xor b; 
+when "110"=> op <= a+1; 
+when "111"=> op <= a nand b; 
+when others=> null; 
+end case; 
+end process; 
+end Behavioral; 
